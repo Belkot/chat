@@ -36,25 +36,23 @@ describe Chat do
   end
 
   context 'have' do
-    before :each do
-      @user1 = build(:user)
-      @user2 = build(:user)
-      @chat = build(:chat)
-    end
+    let(:user1) { build(:user) }
+    let(:user2) { build(:user) }
+    let(:chat) { build(:chat) }
 
     it 'unread messages count for each user' do
-      @chat.users << [@user1, @user2]
-      @chat.save
-      3.times { create(:message, user: @user1, chat: @chat) }
-      expect(@chat.unread_messages_count(@user1)).to eq 0
-      expect(@chat.unread_messages_count(@user2)).to eq 3
+      chat.users << [user1, user2]
+      chat.save
+      3.times { create(:message, user: user1, chat: chat) }
+      expect(chat.unread_messages_count(user1)).to eq 0
+      expect(chat.unread_messages_count(user2)).to eq 3
     end
 
     it 'minimum 2 users before save' do
-      @chat.users << @user1
-      expect(@chat.save).to be_falsey
-      @chat.users << @user2
-      expect(@chat.save).to be_truthy
+      chat.users << user1
+      expect(chat.save).to be_falsey
+      chat.users << user2
+      expect(chat.save).to be_truthy
     end
   end
 end
