@@ -1,9 +1,23 @@
 Rails.application.routes.draw do
+  get 'main/index'
+
+  # get 'signup' => 'users#new'
+
+  resources :users, except: [:new, :edit, :destroy, :update]
+  resource :session, only: [:create, :destroy]
+  resources :chats, except: [:new, :edit, :destroy] do
+    resources :messages, only: [:create, :index]
+    member do
+      post 'readall'
+    end
+  end
+  # resources :messages, except: [:new, :edit]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,7 +1,7 @@
 class Chat < ActiveRecord::Base
   has_many :messages
   has_many :chat_items
-  has_many :users, through: :chat_items
+  has_many :users, through: :chat_items, validate: false
 
   validates :name, presence: true, uniqueness: true, length: { in: 1..20 }
 
