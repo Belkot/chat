@@ -1,7 +1,7 @@
 #signout
   User
   %span#userName
-  = link_to "Sign out", session_path, method: :delete, remote: true, id: "signout_link"
+  = link_to 'Sign out', session_path, method: :delete, remote: true, id: 'signout_link'
 
 .row
   .col-md-3
@@ -9,49 +9,36 @@
       .panel-heading Chats:
       .list-group#chatsList
 
-    / .panel.panel-default
-    /   .panel-heading New chat
-    /   .panel-body
-    /     = simple_form_for(:chat, url: chats_path(format: :json), format: :json, remote: true) do |f|
-    /       .form-inputs
-    /         = f.input :name, required: true
-    /         = f.input :users_ids, required: true
-    /       .formatorm-actions
-    /         = f.button :submit, "Create"
-
-
-    #accordionChat.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
+    #accordionChat.panel-group{'aria-multiselectable' => 'true', :role => 'tablist'}
 
       .panel.panel-default
-        #headingChatCreate.panel-heading{:role => "tab"}
+        #headingChatCreate.panel-heading{:role => 'tab'}
           %h4.panel-title
-            %a{"aria-controls" => "collapseChatCreate", "aria-expanded" => "true", "data-parent" => "#accordionChat", "data-toggle" => "collapse", :href => "#collapseChatCreate", :role => "button"}
+            %a{'aria-controls' => 'collapseChatCreate', 'aria-expanded' => 'true', 'data-parent' => '#accordionChat', 'data-toggle' => 'collapse', :href => '#collapseChatCreate', :role => 'button'}
               Create:
 
-        #collapseChatCreate.panel-collapse.collapse.in{"aria-labelledby" => "headingChatCreate", :role => "tabpanel"}
+        #collapseChatCreate.panel-collapse.collapse.in{'aria-labelledby' => 'headingChatCreate', :role => 'tabpanel'}
           .panel-body
             = simple_form_for(:chat, url: chats_path(format: :json), format: :json, remote: true) do |f|
               .form-inputs
                 = f.input :name, required: true
                 = f.input :user_ids, required: true
               .formatorm-actions
-                = f.button :submit, "Create"
+                = f.button :submit, 'Create'
 
       .panel.panel-default
-        #headingChatUpdate.panel-heading{:role => "tab"}
+        #headingChatUpdate.panel-heading{:role => 'tab'}
           %h4.panel-title
-            %a.collapsed{"aria-controls" => "collapseChatUpdate", "aria-expanded" => "false", "data-parent" => "#accordionChat", "data-toggle" => "collapse", :href => "#collapseChatUpdate", :role => "button"}
+            %a.collapsed{'aria-controls' => 'collapseChatUpdate', 'aria-expanded' => 'false', 'data-parent' => '#accordionChat', 'data-toggle' => 'collapse', :href => '#collapseChatUpdate', :role => 'button'}
               Update:
-        #collapseChatUpdate.panel-collapse.collapse{"aria-labelledby" => "headingChatUpdate", :role => "tabpanel"}
+        #collapseChatUpdate.panel-collapse.collapse{'aria-labelledby' => 'headingChatUpdate', :role => 'tabpanel'}
           .panel-body
             = simple_form_for(:chat, url: chat_path(action: :update, id: 0, format: :json), format: :json, remote: true, method: :put, html: { id: 'chatUpdateForm'}) do |f|
               .form-inputs
                 = f.input :name, required: true
                 = f.input :user_ids, required: true
               .formatorm-actions
-                = f.button :submit, "Update"
-
-
+                = f.button :submit, 'Update'
 
   .col-md-6
     .panel.panel-default
@@ -61,44 +48,41 @@
         = simple_form_for(:message, url: chat_messages_path(chat_id: 0, format: :json), html: { id: 'messageForm'}, format: :json, remote: true ) do |f|
           / = f.error_notification
           .form-inputs
-            = f.input :text, required: true, autofocus: true, label: false, as: :text, input_html: {rows: 5, style: "resize: none" }
+            = f.input :text, required: true, autofocus: true, label: false, as: :text, input_html: {rows: 5, style: 'resize: none' }
           .form-actions
-            = f.button :submit, "Send"
+            = f.button :submit, 'Send'
             = link_to 'Mark all as read', '/chat/0/readall.json', remote: true, method: :post, class: 'btn btn-default', id: 'markReadAll'
 
   .col-md-3
-    #accordionUsers.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
+    #accordionUsers.panel-group{'aria-multiselectable' => 'true', :role => 'tablist'}
 
       .panel.panel-default
-        #headingUserInChat.panel-heading{:role => "tab"}
+        #headingUserInChat.panel-heading{:role => 'tab'}
           %h4.panel-title
-            %a{"aria-controls" => "collapseUserInChat", "aria-expanded" => "true", "data-parent" => "#accordionUsers", "data-toggle" => "collapse", :href => "#collapseUserInChat", :role => "button"}
+            %a{'aria-controls' => 'collapseUserInChat', 'aria-expanded' => 'true', 'data-parent' => '#accordionUsers', 'data-toggle' => 'collapse', :href => '#collapseUserInChat', :role => 'button'}
               Users in chat:
-        #collapseUserInChat.panel-collapse.collapse.in{"aria-labelledby" => "headingUserInChat", :role => "tabpanel"}
+        #collapseUserInChat.panel-collapse.collapse.in{'aria-labelledby' => 'headingUserInChat', :role => 'tabpanel'}
           .panel-body
 
       .panel.panel-default
-        #headingUserAll.panel-heading{:role => "tab"}
+        #headingUserAll.panel-heading{:role => 'tab'}
           %h4.panel-title
-            %a.collapsed{"aria-controls" => "collapseUserAll", "aria-expanded" => "false", "data-parent" => "#accordionUsers", "data-toggle" => "collapse", :href => "#collapseUserAll", :role => "button"}
+            %a.collapsed{'aria-controls' => 'collapseUserAll', 'aria-expanded' => 'false', 'data-parent' => '#accordionUsers', 'data-toggle' => 'collapse', :href => '#collapseUserAll', :role => 'button'}
               All users:
-        #collapseUserAll.panel-collapse.collapse{"aria-labelledby" => "headingUserAll", :role => "tabpanel"}
+        #collapseUserAll.panel-collapse.collapse{'aria-labelledby' => 'headingUserAll', :role => 'tabpanel'}
           .panel-body
 
-/ Modal
-#signModal.modal.fade{:role => "dialog"}
+#signModal.modal.fade{:role => 'dialog'}
   .modal-dialog
-    / Modal content
     .modal-content
       .modal-body
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-
+        / %button.close{'data-dismiss' => 'modal', :type => 'button'} ×
         #signTab
           %ul.nav.nav-tabs.nav-justified
-            %li.active{:role => "presentation"}
-              %a{"data-toggle" => "tab", :href => "#signin"} Sign in
-            %li{:role => "presentation"}
-              %a{"data-toggle" => "tab", :href => "#signup"} Sign up
+            %li.active{:role => 'presentation'}
+              %a{'data-toggle' => 'tab', :href => '#signin'} Sign in
+            %li{:role => 'presentation'}
+              %a{'data-toggle' => 'tab', :href => '#signup'} Sign up
         .tab-content
           #signup.tab-pane.fade
             / %h2 Sign up
@@ -109,7 +93,7 @@
                 = f.input :password, required: true
                 = f.input :password_confirmation, required: true
               .form-actions
-                = f.button :submit, "Sign up"
+                = f.button :submit, 'Sign up'
 
           #signin.tab-pane.fade.in.active
             / %h2 Sign in
@@ -119,5 +103,5 @@
                 = f.input :name, required: true, autofocus: true
                 = f.input :password, required: true
               .form-actions
-                = f.button :submit, "Sign in"
+                = f.button :submit, 'Sign in'
 

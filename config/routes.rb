@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   get 'main/index'
 
-  # get 'signup' => 'users#new'
-
   resources :users, except: [:new, :edit, :destroy, :update]
   resource :session, only: [:create, :destroy]
   resources :chats, except: [:new, :edit, :destroy] do
@@ -11,7 +9,6 @@ Rails.application.routes.draw do
       post 'readall'
     end
   end
-  # resources :messages, except: [:new, :edit]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
